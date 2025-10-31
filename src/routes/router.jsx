@@ -6,6 +6,7 @@ import Home from '../components/Home/Home';
 import Login from '../pages/Login';
 import SignUp from '../pages/SignUp';
 import CardDetails from '../pages/CardDetails';
+import Cart from '../components/Cart/Cart';
 
 const router=createBrowserRouter([
     {
@@ -20,11 +21,17 @@ const router=createBrowserRouter([
             {
                 path:"/cardDetails/:ID",
                 element:<CardDetails></CardDetails>,
-                loader:()=>fetch('/productData.json')
             },
             
         ]
     },
+
+    {
+        path:"/cart",
+        element:<Cart></Cart>,
+        loader:()=>fetch('http://localhost:5001/cart'),
+    },
+
     {
         path:"/auth",
         element:<AuthLayout></AuthLayout>,
