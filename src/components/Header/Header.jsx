@@ -6,8 +6,7 @@ import profile from '../../assets/profile.png'
 const Header = () => {
     const [items, setItems] = useState([]);
     const [totalCost, setTotalCost] = useState(0);
-    const { user } = useContext(AuthContext);
-    console.log(user);
+    const { user,logOut } = useContext(AuthContext);
     useEffect(() => {
         fetch('http://localhost:5001/cart', {
 
@@ -53,20 +52,19 @@ const Header = () => {
                                 <div className="w-10 rounded-full">
                                     <img
                                         alt="Tailwind CSS Navbar component"
-                                        src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
+                                        src={user.photoURL} />
                                 </div>
                             </div>
                             <ul
                                 tabIndex="-1"
                                 className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
                                 <li>
-                                    <a className="justify-between">
+                                    <Link className="justify-between" to={"/profile"}>
                                         Profile
                                         <span className="badge">New</span>
-                                    </a>
+                                    </Link>
                                 </li>
-                                <li><a>Settings</a></li>
-                                <li><a>Logout</a></li>
+                                <li><a onClick={logOut}>Logout</a></li>
                             </ul>
                         </div>
                     </div> :

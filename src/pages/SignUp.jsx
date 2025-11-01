@@ -17,7 +17,6 @@ const SignUp = () => {
         const email = e.target.email.value;
         const password = e.target.password.value;
 
-        console.log(name,photo,email,password);
         if (name.length < 6) {
             setError({ ...error, name: "Your name should be at least of 6 characters" });
             return;
@@ -31,16 +30,28 @@ const SignUp = () => {
             return;
         }
 
+        
         createNewUser(email, password)
-            .then(res => {
-                const user = res.user;
-                setUser(user);
-                profileUpdate({ displayName: name, photoURL: photo })
-                    .then(() => {
-                        navigate("/");
-                    })
+        .then(res => {
+            const user = res.user;
+            setUser(user);
+            profileUpdate({ displayName: name, photoURL: photo })
+            .then(() => {
+                navigate("/");
             })
+            
+        })
 
+        const newUser = { name, photo, email };
+        fetch('http://localhost:5001/user', {
+            method: 'post',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(newUser)
+        })
+            .then(res => res.json())
+        
     }
     return (
         <div>
