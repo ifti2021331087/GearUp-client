@@ -8,7 +8,7 @@ const Header = () => {
     const [totalCost, setTotalCost] = useState(0);
     const { user,logOut } = useContext(AuthContext);
     useEffect(() => {
-        fetch('http://localhost:5001/cart', {
+        fetch('https://gear-up-server.vercel.app/cart', {
 
         })
             .then(res => res.json())

@@ -31,7 +31,7 @@ const CardDetails = () => {
 
     const handleAddItem = () => {
         const newItem = { image, itemName, categoryName, description, price, rating, customization, processingTime, stockStatus };
-        fetch('http://localhost:5001/cart', {
+        fetch('https://gear-up-server.vercel.app/cart', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

@@ -43,7 +43,7 @@ const SignUp = () => {
         })
 
         const newUser = { name, photo, email };
-        fetch('http://localhost:5001/user', {
+        fetch('https://gear-up-server.vercel.app/user', {
             method: 'post',
             headers: {
                 'content-type': 'application/json'

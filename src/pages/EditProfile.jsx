@@ -12,7 +12,7 @@ const EditProfile = () => {
         const name=e.target.name.value;
         const photo=e.target.photo.value;
         const newProfile={name,photo,email};
-        fetch("http://localhost:5001/user",{
+        fetch("https://gear-up-server.vercel.app/user",{
             method:'PATCH',
             headers:{
                 'content-type':'application/json'

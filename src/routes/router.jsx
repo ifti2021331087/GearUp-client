@@ -42,7 +42,7 @@ const router = createBrowserRouter([
         path: "/editProfile/:email",
         element: <EditProfile></EditProfile>,
         loader: ({ params }) =>
-            fetch(`http://localhost:5001/user/${params.email}`)
+            fetch(`https://gear-up-server.vercel.app/user/${params.email}`)
     },
 
     {
@@ -52,7 +52,7 @@ const router = createBrowserRouter([
                 <Cart></Cart>,
             </PrivateRoute>
         ),
-        loader: () => fetch('http://localhost:5001/cart')
+        loader: () => fetch('https://gear-up-server.vercel.app/cart')
     },
 
     {
