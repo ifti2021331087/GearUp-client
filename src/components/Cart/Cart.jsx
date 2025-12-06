@@ -3,10 +3,24 @@ import Header from '../Header/Header';
 import { useLoaderData } from 'react-router-dom';
 import ItemCard from '../ItemCard/ItemCard';
 import Swal from 'sweetalert2';
+import { AuthContext } from '../../provider/AuthProvider';
 
 const Cart = () => {
+    // const { user } = useContext(AuthContext);
     const loadedItems = useLoaderData();
     const [items, setItems] = useState(loadedItems);
+    // const [items, setItems] = useState([]);
+    
+    // useEffect(() => {
+    //     if (!user?.email) return;
+    //     // fetch(`http://localhost:5001/myTutors`)
+    //     fetch(`https://gear-up-server.vercel.app/cart?userEmail=${user.email}`, {
+    //         method: "GET",
+    //         credentials: "include"
+    //     })
+    //         .then(res => res.json())
+    //         .then(data => setItems(data));
+    // }, [user])
     const handleDelete = (id) => {
         const swalWithBootstrapButtons = Swal.mixin({
             customClass: {
@@ -25,17 +39,17 @@ const Cart = () => {
         }).then((result) => {
             if (result.isConfirmed) {
 
-                fetch(`https://gear-up-server.vercel.app/cart/${id}`,{
-                    method:'DELETE',
+                fetch(`https://gear-up-server.vercel.app/cart/${id}`, {
+                    method: 'DELETE',
                 })
-                .then(res=>res.json())
-                .then(data=>{
-                    if(data.deletedCount){
-                        const remainningItems=items.filter(item=>item._id!==id);
-                        setItems(remainningItems);
-                    }
-                })
-            } 
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.deletedCount) {
+                            const remainningItems = items.filter(item => item._id !== id);
+                            setItems(remainningItems);
+                        }
+                    })
+            }
         });
     }
     // console.log(items);
