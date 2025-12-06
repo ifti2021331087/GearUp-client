@@ -10,6 +10,7 @@ const Profile = () => {
     return (
         <div>
             <Header></Header>
+            <div>This is Rana Singha</div>
             <div className="max-w-sm mx-auto mt-10 bg-white shadow-lg rounded-2xl overflow-hidden border border-gray-100">
                 <div className="flex justify-center mt-6">
                     <img
